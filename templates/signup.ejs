@@ -1,0 +1,40 @@
+<%- include("partials/header", { pageTitle: "Sign Up" }) %>
+<div class="page-container">
+	<h1>Sign Up for the Senior Check-In App</h1>
+	<form action="/signup" method="post">
+		<fieldset>
+            <legend>
+                <strong>Customer Information</strong>
+            </legend>
+            
+			<label>Name: <input type="text" name="name" required></label>
+			<label>Email Address: <input type="email" name="email"  placeholder="emailname@domain.com" required></label>
+            <label>Password: <input type="password" name="password" required minlength="4"></label><br>
+            <label>Phone: <input type="tel" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></label>
+		</fieldset>
+
+		<fieldset>
+            <legend>
+                <strong>Care Circle Information</strong>
+            </legend>
+            <label>Care Circle contact name: <input type="text" name="careCircleName" required></label>
+            <label>Care Circle contact Email Address: <input type="email" name="careCircleEmail" placeholder="emailname@domain.com" required></label>
+		</fieldset>        
+
+		<fieldset>
+			<legend>
+                <strong>Alert Communication Preference</strong>
+			</legend>
+			<label><input type="radio" name="delivery" value="phone" required>Phone Call</label>
+	    	<label><input type="radio" name="delivery" value="text" required>Text</label>
+            <label><input type="radio" name="delivery" value="email" required>Email</label><br>
+		</fieldset>
+
+		<br>
+		<button type="reset" class="primary-button form-button" value="Reset">Reset</button>
+		<button type="submit" class="primary-button form-button" value="Sign Up">Sign Up</button>
+	</form>
+
+</div>
+<%- include("partials/footer") %>
+

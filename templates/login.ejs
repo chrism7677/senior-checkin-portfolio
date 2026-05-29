@@ -1,0 +1,34 @@
+<%- include("partials/header", { pageTitle: "Login Page" }) %>
+<div class="page-container">
+	<h1>Login Page</h1>
+
+	<% if (errorMessage) { %>
+	<p class="error-message"><%= errorMessage %></p>
+	<% } %>
+
+	<form action="/login" method="post">
+		<fieldset>
+            <legend>
+                <strong>Login Information</strong>
+            </legend>
+			<label>Email Address: <input type="email" name="email" value="<%= formData?.email || "" %>" placeholder="emailname@domain.com" required></label>
+            <label>Password: <input type="password" name="password" required minlength="4"></label>
+		</fieldset>
+ 
+
+		<fieldset>
+			<legend>
+                <strong>Select Action After Login</strong>
+			</legend>
+			<label><input type="radio" name="loginaction" value="editprofile" <%= formData?.loginaction === "editprofile" ? "checked" : "" %> required>Edit Profile</label>
+	    	<label><input type="radio" name="loginaction" value="alternatecheckin" <%= formData?.loginaction === "alternatecheckin" ? "checked" : "" %> required>Alternate Check-In</label>
+		</fieldset>
+
+		<br>
+		<button type="reset" class="primary-button form-button" value="Reset">Reset</button>
+		<button type="submit" class="primary-button form-button" value="Login">Login</button>
+	</form>
+
+</div>
+<%- include("partials/footer") %>
+

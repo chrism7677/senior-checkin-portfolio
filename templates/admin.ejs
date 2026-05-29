@@ -1,0 +1,63 @@
+<%- include("partials/header", { pageTitle: "Admin Page" }) %>    
+    <h1>Admin Page for the Senior Check-In App</h1>
+    <div class="demo-notice">
+        Demo mode: this admin dashboard is open for project review. 
+    </div>
+
+    <% if (adminRows.length === 0) { %>
+        <p>No senior profiles found.</p>
+    <% } else { %>
+        <div class="table-wrapper">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Senior Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Contact Name</th>
+                        <th>Contact Email</th>
+                        <th>Contact Preference</th>
+                        <th>Last Check-In Time</th>
+                        <th>Last Check-In Status</th>
+                        <th>Last Check-In Notes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% adminRows.forEach(row => { %>
+                        <tr>
+                            <td><%= row.senior.name %></td>
+                            <td><%= row.senior.email %></td>
+                            <td><%= row.senior.phone %></td>
+                            <td><%= row.senior.contactName %></td>
+                            <td><%= row.senior.contactEmail %></td>
+                            <td><%= row.senior.contactPreference %></td>
+
+                            <% if (row.checkIn) { %>
+                                <td><%= new Date(row.checkIn.checkInTime).toLocaleString() %></td>
+                                <td><%= row.checkIn.status %></td>
+                                <td><%= row.checkIn.notes || "N/A" %></td>
+                            <% } else { %>
+                                <td>No check-in</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>            
+
+
+<form class="inline-form"
+      action="/admin/clear-database"
+      method="post"
+      onsubmit="return confirm('Are you sure? This will delete all profiles and check-ins.');">
+      <br>
+    <p>Demo Testing: If you are testing and added something you didn't want to feel free to clear the database.</p>
+    <button type="submit" class="danger-button">Clear Database</button> 
+</form>
+
+<%- include("partials/footer") %>
+

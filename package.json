@@ -1,0 +1,26 @@
+{
+  "name": "senior-checkin-app",
+  "version": "1.0.0",
+  "description": "Full-stack Node.js/Express application for senior wellness check-ins featuring MongoDB integration, Dockerized deployment, GitHub Actions CI/CD, and AWS hosting.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "Christopher Miller",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "mongodb-memory-server": "^11.1.0",
+    "supertest": "^7.2.2"
+  }
+}

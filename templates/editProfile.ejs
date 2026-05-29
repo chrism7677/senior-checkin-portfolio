@@ -1,0 +1,41 @@
+<%- include("partials/header", { pageTitle: "Edit Profile" }) %>
+<div class="page-container">
+	<h1>Edit Profile for the Senior Check-In App</h1>
+	<form action="/editprofile" method="post">
+		<fieldset>
+            <legend>
+                <strong>Customer Information</strong>
+            </legend>
+            
+			<label>Name: <input type="text" name="name" required value="<%= user.name %>"></label>
+			<label>Email Address: <input type="email" name="email"  required value="<%= user.email %>"></label>
+            <label>Password: <input type="password" name="password" required minlength="4" value="<%= user.password %>"></label><br>
+            <label>Phone: <input type="tel" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value="<%= user.phone %>"></label>
+		</fieldset>
+
+		<fieldset>
+            <legend>
+                <strong>Care Circle Information</strong>
+            </legend>
+            <label>Care circle contact name: <input type="text" name="careCircleName" required value="<%= user.contactName %>"></label>
+            <label>Care circle contact Email Address: <input type="email" name="careCircleEmail" required value="<%= user.contactEmail %>"></label>
+		</fieldset>        
+
+		<fieldset>
+			<legend>
+                <strong>Alert Communication Preference</strong>
+			</legend>
+			<label><input type="radio" name="delivery" value="phone" required <% if (user.contactPreference === 'phone') { %>checked<% } %>>Phone Call</label>
+	    	<label><input type="radio" name="delivery" value="text" required <% if (user.contactPreference === 'text') { %>checked<% } %>>Text</label>
+            <label><input type="radio" name="delivery" value="email" required <% if (user.contactPreference === 'email') { %>checked<% } %>>Email</label><br>
+		</fieldset>
+
+		<br>
+		<input type="hidden" name="originalEmail" value="<%= user.email %>">
+		<button type="reset" class="primary-button form-button" value="Reset">Reset</button>
+		<button type="submit" class="primary-button form-button" value="Update Profile">Update Profile</button>
+	</form>
+
+</div>
+<%- include("partials/footer") %>
+

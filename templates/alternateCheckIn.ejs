@@ -1,0 +1,80 @@
+<%- include("partials/header", { pageTitle: "Alternate Check-In" }) %>    
+<div class="page-container">
+    <h1>Alternate Check-In Page</h1>
+    <h2>Use this page if you lost access to your phone</h2>
+    <p class="alert-message">This will overwrite your previous alternate check-in.</p>
+
+    <form action="/alternateCheckIn" method="post">
+
+        <fieldset>
+            <legend>
+                <strong>Check-In Type</strong>
+            </legend>
+
+            <label>
+                <input type="radio" name="checkintype" value="informational" required>
+                Info
+            </label>
+            <br>
+
+            Informational message to care circle:
+            <br>
+            I'm okay, but I lost my phone.
+            I can't do regular check-ins from the phone app until I find or replace my phone.
+            <br>
+            Uses default communication preference.
+            <br><br>
+
+            <label>
+                <input type="radio" name="checkintype" value="alert" required>
+                Alert
+            </label>
+            <br>
+
+            Warning message to care circle:
+            I'm okay right now, but I lost my phone.
+            <br>
+            Important: I will need help soon.
+            <br>
+            Uses default communication preference.
+            <br><br>
+
+            <label>
+                <input type="radio" name="checkintype" value="emergency" required>
+                Emergency
+            </label>
+            <br>
+
+            Emergency message to care circle:
+            <br>
+            Emergency! Have support make an emergency call to my care circle.
+			<br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend><strong>Additional Information for Check-In</strong></legend>
+
+            <label for="checkInInformation">
+                Additional Notes:
+            </label>
+            <br>
+
+            <textarea
+                id="checkInInformation"
+                name="checkInInformation"
+                rows="5"
+                cols="80"
+            ></textarea>
+        </fieldset>
+
+        <br>
+
+        <input type="hidden" name="originalId" value="<%= user._id %>">
+
+		<button type="reset" class="primary-button form-button" value="Reset">Reset</button>
+		<button type="submit" class="primary-button form-button" value="Submit Alternate Check-In">Submit Check-In</button>
+    </form>
+
+</div>
+<%- include("partials/footer") %>
+
