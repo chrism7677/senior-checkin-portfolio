@@ -3,7 +3,7 @@ Full-stack web application for monitoring senior wellness and check-ins.<br>
 Deployed on AWS using Docker, Nginx, MongoDB, and GitHub Actions.
 
 ## Live Demo
-https://cmiller.dev
+https://senior.cmiller.dev/
 
 Note: free-tier hosting may sleep
 
